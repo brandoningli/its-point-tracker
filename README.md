@@ -2,7 +2,8 @@
 This is a system based on Google Apps to help Thespian Troupe 5424 (Marquette High School, Chesterfield, MO) and others keep track of and analyze their thespian point records. They were previously using a system of index cards stored in a box above the director's desk, so needless to say this was a both a practical upgrade and a safeguard. It's not the most organized nor the most efficient code ever, but it works.  
 
 ## If You're a Troupe Director and Want a Ready-Made Copy for Yourself...
-[Visit the Marquette Theatre Company webpage for this project to get your own copy.](http://tracker.marquettetheatrecompany.com)
+[Visit the Marquette Theatre Company webpage for this project to get your own copy.](http://tracker.marquettetheatrecompany.com)  
+This is the preferred method of obtaining the tracker.. It will automatically create your own copy of the scripts on your Google account so setup is much easier and faster..
 
 ## Description
 *This is taken directly from the Marquette Theatre Company website.*
