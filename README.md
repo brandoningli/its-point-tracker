@@ -21,3 +21,6 @@ This folder contains the code Troupe 5424 currently runs, with certain specific 
 
 ### For Other Troupes
 This folder contains the code available for other troupes to readily use. Interested troupe directors can get the Apps Script code copied to their Drive account, as well as video instructions for the setup, on [the Marquette Theatre Company website.](http://tracker.marquettetheatrecompany.com)
+
+## Disclaimer
+The ITS Point Tracker tool is not affiliated with nor endorsed by the Educational Theatre Association.
