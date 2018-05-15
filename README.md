@@ -19,3 +19,6 @@ An alternate, more feature-rich version of this tracker was created for Troupe 5
 
 ## Disclaimer
 The ITS Point Tracker tool is not affiliated with nor endorsed by the Educational Theatre Association.
+
+## License
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
