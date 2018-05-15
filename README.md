@@ -14,13 +14,8 @@ This is a system based on Google Apps to help Thespian Troupe 5424 (Marquette Hi
 >
 >We've detailed how to get it working for your troupe inside the Google Apps Script file. Just open the "README" section of it. Feel free to play around with it once you have it set up. All you have to do to reset it is to delete the Google Sheets file it generates.
 
-## File Descriptions
-
-### Troupe 5424
-This folder contains the code Troupe 5424 currently runs, with certain specific details redacted for security reasons.
-
-### For Other Troupes
-This folder contains the code available for other troupes to readily use. Interested troupe directors can get the Apps Script code copied to their Drive account, as well as video instructions for the setup, on [the Marquette Theatre Company website.](http://tracker.marquettetheatrecompany.com)
+## Alternate Version for Troupe 5424
+An alternate, more feature-rich version of this tracker was created for Troupe 5424 specifically, and is not shared here for security reasons, as well as the fact that it is not distributed under the CC license. Brandon (the creator of the tracker) does have this code stored privately for future inspection.
 
 ## Disclaimer
 The ITS Point Tracker tool is not affiliated with nor endorsed by the Educational Theatre Association.
