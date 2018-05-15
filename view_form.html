@@ -1,0 +1,90 @@
+<script>
+/***
+ITS Point Tracker
+Created by Brandon Ingli, Class of 2017
+Troupe 5424, Marquette High School, Chesterfield, MO
+
+This tool is not affiliated with the Educational Theatre Society
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+***/
+
+/* ------- TROUPE CONFIGURATION  -------*/
+
+/*
+Change the variable below to match the link to your Google Apps Script
+*/
+ var url = "https://script.google.com/macros/s/[something]/exec";
+
+/* ------- END TROUPE CONFIGURATION  -------*/
+
+</script>
+<style>
+/* ---------- Tooltip CSS ------------------*/
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+
+    /* Position the tooltip text on bottom */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -80px; /* Use half of the width (120/2 = 60), to center the tooltip */
+
+    /* Animation In */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* Arrow on Top */
+.tooltip .tooltiptext::after {
+   content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+/* Show the tooltip text when you focus on the input inside the tooltip container */
+input:focus ~ .tooltiptext{
+    visibility: visible;
+    opacity: 1;
+}
+
+
+</style>
+<script>
+    function searchSub(){
+        document.getElementById("first").value = document.getElementById("first").value.trim();
+        document.getElementById("last").value = document.getElementById("last").value.trim();
+        document.getElementById("myForm2").action = url;
+        document.getElementById("myForm2").submit();
+    }
+
+</script>
+
+<form id="myForm2" method="POST" target="_blank">
+
+<table class="in">
+<tr class="in"><td class="in">Name:&nbsp;&nbsp;</td><td class="in"><div class="tooltip"><input type="text" id="first" name="first" placeholder="First Name"><span class="tooltiptext">Capitalization does not matter. Enter name as it appears on record.</span></div><div class="tooltip"><input type="text" id="last" name="last" placeholder="Last Name"><span class="tooltiptext">Capitalization does not matter. Enter name as it appears on record.</span></div></td></tr>
+ <tr class="in"><td class="in">Graduating Class:&nbsp;&nbsp;</td><td class="in"><input type="number" id="class" name="class" min="2016" placeholder="2017"></td></tr>
+</table>
+<input type="button" value="Submit" id="submitBtn2" onclick="searchSub();">
+</form><br>
+<input type="submit" align="right" id="clear" value="Clear Form" onclick="document.getElementById('myForm2').reset();">

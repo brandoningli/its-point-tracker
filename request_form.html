@@ -1,0 +1,163 @@
+<script>
+/***
+ITS Point Tracker
+Created by Brandon Ingli, Class of 2017
+Troupe 5424, Marquette High School, Chesterfield, MO
+
+This tool is not affiliated with the Educational Theatre Society
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+***/
+
+/* ------- TROUPE CONFIGURATION  -------*/
+
+/*
+Change the variable below to match the link to your Google Apps Script
+*/
+ var url = "https://script.google.com/macros/s/[something]/exec";
+
+/*
+Change the variable below to the email address of the person in charge of awarding points, i.e. the Troupe Director
+*/
+var email = "test@example.com";
+
+/* ------- END TROUPE CONFIGURATION  -------*/
+
+</script>
+<style>
+/* ---------- Tooltip CSS ------------------*/
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    font-size: 11px;
+
+    /* Position the tooltip text on right */
+    position: absolute;
+    z-index: 1;
+   top: 3px;
+    left: 105%;
+
+    /* Animation In */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* Arrow on left */
+.tooltip .tooltiptext::after {
+  content: " ";
+    position: absolute;
+    top: 20%;
+    left: -10px; /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+/* Show the tooltip text when you focus on the input inside the tooltip container */
+input:focus ~ .tooltiptext{
+    visibility: visible;
+    opacity: 1;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+	$('#classes').val('1');
+	var addDiv = $('#addinput');
+	var i = $('#addinput p').size() + 1;
+	$('.test').html(i);
+
+	$('#addNew').live('click', function() {
+		if(i < 6){
+      if(document.getElementById("remNew").style.display == "none"){
+        document.getElementById("remNew").style = "display: inline; font-size: 21px;";
+      }
+		i++;
+	$('<tr ><td ><input class="uf" type="text" name="production'+i+'" id="prod'+i+'" placeholder="Production" /></td><td ><input class="uf" type="text" name="date'+i+'" id="date'+i+'" placeholder="Date" /></td><td ><input class="uf" type="text" name="role'+i+'" id="role'+i+'" placeholder="Role" /></td></tr>').appendTo('#table');
+	$('#rolenum').val(i);}
+  if(i == 6){
+    document.getElementById("addNew").style.display = "none";
+  }
+	return false;
+	});
+
+	$('#remNew').live('click', function() {
+	if( i >= 2 ) {
+    if(document.getElementById("addNew").style.display == "none"){
+      document.getElementById("addNew").style.display = "inline";
+    }
+	$(document.getElementById("prod"+i)).parents('tr').remove();
+	i--;
+	}
+  if(i == 1){
+    document.getElementById("remNew").style.display = "none";
+  }
+	//$('.test').html(i);
+	$('#rolenum').val(i);
+	return false;
+
+
+	});
+	$('#submit').live('click', function() {
+        document.getElementById("first").value = document.getElementById("first").value.trim();
+	    document.getElementById("last").value = document.getElementById("last").value.trim();
+		var elements = document.getElementsByTagName("input");
+	    for (var m = 0; m < elements.length-1; m++) {
+		    if(elements[m].className == "uf" && (elements[m].type == "text" || elements[m].type == "number") && !elements[m].value.match(/\S/)){
+		    	alert('You Forgot Something!');
+			    return;}
+	    }
+	    var param = $("#form1").serialize();
+
+	  newWindow = window.open("mailto:"+email+"?Subject=ITS%20Point%20Record%20Update%20Request&Body=I%20am%20requesting%20that%20you%20update%20my%20ITS%20point%20record.%0A%0ATo%20view%20my%20requests%20and%20add%20points%2C%20visit%20this%20URL%3A%20"+encodeURIComponent(" "+url+"?")+encodeURIComponent(param), "_blank");
+      newWindow.document.title = "ITS Point Tracker - Submission"
+      newWindow.document.write("<h2>ITS Points Tracker - Submit Request</h2>A new email should have opened. Just hit send!<br>");
+      newWindow.document.write("Having troubles? Open your email client and create a new email. <br>");
+      newWindow.document.write("<table border=0><tr><td>To: </td><td><input type='text' size='45' value='" + email + "'></td></tr><tr><td>Subject:</td><td><input type='text' value='ITS Point Record Update Request' size='45'</td></tr><tr><td>Message:</td><td><textarea cols='100' rows='10'>I am requesting that you update my ITS point record.\n\nTo view my requests and add points, visit this URL: " + url+"?"+param+"</textarea></td></tr></table>")
+	});
+	});
+
+	</script>
+
+<form id="form1" name="form1">
+  Name: <div class="tooltip"><input class="uf" type="text" name="firstname" id="first" placeholder="First Name">&nbsp;<input type="text" name="lastname" id="last" placeholder="Last Name"><span class="tooltiptext">Capitalization does not matter. Enter name as it appears on record, if you have one.</span></div><br><br>
+  Graduating Class: <input class="uf" type="number" name="class" id="class" size="5" min="2016" max="2099" placeholder="2017"><br><br>
+  <table width="75%" border="0" cellspacing="0" cellpadding="0" name="table" id="table">
+  <tr>
+    <th scope="col">Production</th>
+    <th scope="col">Date</th>
+    <th scope="col">Role</th>
+    <td>&nbsp;&nbsp;<a style="font-size: 21px;" href="#" id="addNew">+</a>&nbsp;&nbsp;</td><td><a href="#" id="remNew" style="font-size: 21px; display: none;">-</a></td>
+  </tr>
+  <tr>
+  <td>
+    <input class="uf" type="text" name="production1" id="prod1" placeholder="Production">
+    </td>
+<td>
+    <input class="uf" type="text" name="date1" id="date1" placeholder="Date">
+    </td>
+<td>
+    <input class="uf" type="text" name="role1" id="role1" placeholder="Role">
+    </td>
+  </tr>
+
+
+</table>
+  <input type="hidden" name="rolenum" id="rolenum" value="1">
+  <br>
+  <input name="submit" id="submit" type="button" value="Submit">
+</form>

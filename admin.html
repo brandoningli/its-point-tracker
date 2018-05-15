@@ -1,0 +1,83 @@
+<!--
+ITS Point Tracker
+Created by Brandon Ingli, Class of 2017
+Troupe 5424, Marquette High School, Chesterfield, MO
+
+This tool is not affiliated with the Educational Theatre Society
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+-->
+<!-- Include the Google CSS package -->
+<link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
+<!-- Include JQuery and code to remove table rows -->
+
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js'></script>
+<script type='text/javascript'>
+$('#remNew').live('click', function() {
+	$(this).parents('tr').remove();
+	//$('.test').html(i);
+	$('#classes').val(i);
+	return false;
+	});
+</script>
+
+<!-- You can also include your own CSS styles -->
+<style>
+body { padding: 40px 25px;
+font-family: "Roboto", "Times New Roman";
+font-size: 3;
+text-align: center;
+background-color:#000037;
+background-image: url("http://nebula.wsimg.com/90b15abf590dd54e796dbcca9d77f9f9?AccessKeyId=6ED4967B9807D468360E&alloworigin=1");
+background-size: cover;
+color:white;
+}
+.header {
+font-family: 'Cinzel', "Palatino Linotype", "Roboto", "Times New Roman";
+font-size: xx-large;
+color:white;
+}
+.tablehead {
+font-family: 'Cinzel', "Palatino Linotype", "Roboto", "Times New Roman";
+color:white;
+font-size: large;
+}
+a{
+   color:lime !important;
+}
+table.in, td.in, tr.in, th.in{
+border: 2px white; padding:8px; text-align: center;}
+td.outer{padding: 8px; }
+input { display:inline; margin: 20px; }
+
+</style>
+<script>
+function addMe(form){
+   try{
+        if(!form.elements["production"].value || !form.elements["role"].value || !form.elements["date"].value || !form.elements["newpts"].value){
+            alert("You're missing something...");
+            document.getElementById('submit'+form.elements["fmid"].value).value = "Add Points";
+            return false;
+        }
+        if(!form.elements["txt"].value || !form.elements["firstname"].value || !form.elements["lastname"].value || !form.elements["class"].value){
+            alert("Internal Error: One or more hidden values missing...");
+            document.getElementById('submit'+form.elements["fmid"].value).value = "Add Points";
+            return false;
+        }
+        google.script.run.withSuccessHandler(successFunc).updatePoints(form);
+        return false;
+    }catch(e){
+      alert("Error: "+e.toString());
+    }
+    }
+function successFunc(e){
+       var rtn = e.split("%");
+       if(rtn[0].substring(0,5) != 'Error'){
+         $('#'+rtn[1]).parents('tr').remove();
+       }else{
+         document.getElementById('submit'+rtn[1]).value = "Add Points";
+       }
+       alert(rtn[0]);
+}
+</script>
