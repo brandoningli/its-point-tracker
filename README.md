@@ -3,7 +3,7 @@ This is a system based on Google Apps to help Thespian Troupe 5424 (Marquette Hi
 
 ## If You're a Troupe Director and Want a Ready-Made Copy for Yourself...
 [Visit the Marquette Theatre Company webpage for this project to get your own copy.](http://tracker.marquettetheatrecompany.com)  
-This is the preferred method of obtaining the tracker.. It will automatically create your own copy of the scripts on your Google account so setup is much easier and faster..
+This is the preferred method of obtaining the tracker. It will automatically create your own copy of the scripts on your Google account so setup is much easier and faster.
 
 ## Description
 *This is taken directly from the Marquette Theatre Company website.*
